@@ -18,6 +18,8 @@ public class UserService {
         return userRepo.save(user);
     }
 
+
+
     public List<User> getAllUser(){
         return userRepo.findAll();
     }

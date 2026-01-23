@@ -11,6 +11,8 @@ public class BackendOwnApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(BackendOwnApplication.class, args);
+		System.out.print("Starting of project");
+
 	}
 
 }
