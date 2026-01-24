@@ -1,6 +1,7 @@
 package com.example.backendOwn;
 
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public UserController(UserService userService){
 }
 
 @PostMapping
-    public User createUser(@RequestBody User user){
+    public User createUser(@Valid @RequestBody User user){
         return  userService.createUser(user);
 }
 
@@ -24,4 +25,18 @@ public UserController(UserService userService){
     public List<User> getAllUser(){
     return userService.getAllUser();
     }
+
+@GetMapping("/{id}")
+    public User getUserById(@PathVariable long id){
+    return userService.getUserById(id);
+}
+
+@PutMapping("/{id}")
+    public User updateUser(@PathVariable Long id , @RequestBody User user){
+    return userService.updateUser(id, user);
+}
+@DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable long id){
+        userService.deleteUser(id);
+}
 }

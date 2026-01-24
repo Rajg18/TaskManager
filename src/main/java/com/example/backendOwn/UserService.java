@@ -19,10 +19,24 @@ public class UserService {
     }
 
 
-
     public List<User> getAllUser(){
         return userRepo.findAll();
     }
 
+    public User getUserById(long id){
+        return userRepo.findById(id).orElseThrow(() -> new UserNotFoundE("No User Found with id " + id));
+    }
+
+    public User updateUser(long id , User updateUser){
+        User existingUser = getUserById(id);
+        existingUser.setName(updateUser.getName());
+        existingUser.setEmail(updateUser.getEmail());
+        return userRepo.save(existingUser);
+    }
+
+    public void deleteUser(long id){
+        User user = getUserById(id);
+        userRepo.delete(user );
+    }
 
 }

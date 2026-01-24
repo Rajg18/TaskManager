@@ -1,18 +1,23 @@
 package com.example.backendOwn;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 
 @Entity
+@Table(name = "User")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @NotBlank(message = "Enter a valid message")
     private String name;
+
+    @NotBlank(message = "Enter a valid mail")
+    @Email(message = "Email should be valid")
     private String email;
 
     public long getId() {
