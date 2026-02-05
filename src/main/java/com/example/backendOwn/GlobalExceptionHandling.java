@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestControllerAdvice
+@RestControllerAdvice //Hanldles exceptions thrown anywhere in the applications
 public class GlobalExceptionHandling {
 
 
         @ExceptionHandler(UserNotFoundE.class)
         public ResponseEntity<String> handleUserNotFound(UserNotFoundE ex) {
+
+            System.out.print("Person not found error");
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body(ex.getMessage());
         }
@@ -32,4 +34,4 @@ public class GlobalExceptionHandling {
             return ResponseEntity.badRequest().body(errors);
         }
     }
-
+    

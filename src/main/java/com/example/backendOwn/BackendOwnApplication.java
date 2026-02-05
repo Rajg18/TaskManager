@@ -14,5 +14,4 @@ public class BackendOwnApplication {
 		System.out.print("Starting of project");
 
 	}
-
 }

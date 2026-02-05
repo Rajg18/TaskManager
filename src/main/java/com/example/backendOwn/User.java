@@ -1,5 +1,6 @@
 package com.example.backendOwn;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
@@ -19,6 +20,18 @@ public class User {
     @NotBlank(message = "Enter a valid mail")
     @Email(message = "Email should be valid")
     private String email;
+
+    @JsonIgnore
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 
     public long getId() {
         return id;
